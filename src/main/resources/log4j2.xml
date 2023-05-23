@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" packages="core.io.logging">
+    <Properties>
+        <Property name="LOG_LEVEL_PATTERN">%5p</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d][%highlight{%-5level}][%C{1}] %m%n"/>
+        </Console>
+        <RollingFile name="RollingFile"
+                     fileName="logs\core.log"
+                     filePattern="logs\core.%d{dd-MMM-YYYY}.log.gz"
+                     ignoreExceptions="false">
+            <PatternLayout pattern="[%d][%highlight{%-5level}][%C{1}] %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <DiscordAppender name="Discord"/>
+        <!--<GuiAppender name="GuiConsole">
+            <PatternLayout>
+                <pattern>"[%d][%highlight{%-5level}][%C{1}] %m%n"</pattern>
+            </PatternLayout>
+        </GuiAppender>-->
+    </Appenders>
+
+    <Loggers>
+        <logger name="org.hibernate.SQL" level="info"/>
+        <logger name="org.hibernate" level="warn"/>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="Discord"/>
+            <!--<AppenderRef ref="GuiConsole"/>-->
+        </Root>
+    </Loggers>
+
+</Configuration>
