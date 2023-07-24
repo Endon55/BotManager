@@ -1,7 +1,8 @@
 # BotManager
 Bot Manager is a program that manages runescape bots.
 
-The botting system consists of 2 parts. The server which manages bot clients(this repository) and a private repository for the scripts the bots use in game.
+The botting system consists of 2 parts. The server which manages bot clients, and the scripting used to control the bots in game.
+This repository is a snapshot of the Bot Manager part of the project, the rest remains private.
 
 Bot Lifecycle
 1. Manually create new runescape account, run it through the tutorial and then add the account credentials into the database.
